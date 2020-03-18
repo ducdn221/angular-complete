@@ -1,4 +1,9 @@
+import { Injectable, EventEmitter } from "@angular/core";
+import { LoggingService } from "./logging.service";
+
+@Injectable()
 export class AccountService {
+
     accounts = [
         {
             name: 'Master Account',
@@ -14,12 +19,18 @@ export class AccountService {
         }
     ];
 
+    constructor(private loggingService: LoggingService) { }
+
+    statusUpdated = new EventEmitter<string>();
+
     onAddAccount(name: string, status: string) {
         this.accounts.push({ name, status });
+        this.loggingService.logStatusChange(status);
     }
 
-    onUpdateAccount(id: number, status: string) { 
+    onUpdateAccount(id: number, status: string) {
         this.accounts[id].status = status;
+        this.loggingService.logStatusChange(status);
     }
 
 }
