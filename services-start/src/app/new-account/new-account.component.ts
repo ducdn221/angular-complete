@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { LoggingService } from '../logging.service';
+// import { LoggingService } from '../logging.service';
 import { AccountService } from '../accounts.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { AccountService } from '../accounts.service';
 })
 export class NewAccountComponent {
   // @Output() accountAdded = new EventEmitter<any>();
-  constructor(private loggingService: LoggingService, private accountService: AccountService) {
+  constructor(private accountService: AccountService) {
     
    }
   onCreateAccount(accountName: string, accountStatus: string) {
